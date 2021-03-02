@@ -1,7 +1,7 @@
 <template>
 
 
-  <h1>appli</h1>
+  <h1>todolist</h1>
   <input type="checkbox" v-on:change='checkTodo'>{{box.name}}
   <ul>
 
