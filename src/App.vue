@@ -1,116 +1,10 @@
 <template>
-
-
-  <h1>appli</h1>
-  <input type="checkbox" v-on:change='checkTodo'>{{box.name}}
-  <ul>
-
-  <li class="todo" :class="{completed: todo.completed}" v-for="todo in todos" v-bind:key="todo.id">
-  <input type="checkbox" v-model="todo.completed">
-  {{todo.name}}</li>
-  </ul>
-  <span>{{remaining}}</span> Taches restantes
-
-
-
-
-
-
-
-
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+  <router-view/>
 </template>
-
-<script>
-
-
-export default {
-  name: 'App',
-
-  data(){
-  return{
-
-  box:{
-  name: 'uncheck all',
-  completed : false
-  },
-
-  todos: [
-
-  {
-  id: 1,
-  name : 'tache 1',
-  completed : true
-  },
-  {
-  id: 2,
-  name : 'tache 2',
-  completed: true
-  },
-  {
-  id: 3,
-  name : 'tache 3',
-  completed : false
-  },
-  {
-  id: 4,
-  name : 'tache 4',
-  completed : false
-  },
-
-],
-
-  newTodo: '',
-  filter:'all'
-}
-},
-
-    methods: {
-
-
-    checkTodo(){
-    if (this.box.completed==true){
-    this.todos.forEach(todo => {todo.completed=true})
-    this.box.completed=false
-    this.box.name = 'uncheck all'
-    }else{
-    this.todos.forEach(todo => {todo.completed=false})
-    this.box.completed=true
-    this.box.name='check all'
-    }
-    console.log(this.box.completed)
-    },
-
-    filterTaches(){
-    this.todos.forEach("todo in tachesAfaire")
-
-
-    }
-
-
-    },
-
-    components: {
-},
-
-  computed:{
-    remaining(){
-    return this.todos.filter(todo => !todo.completed).length
-    },
-
-    tachesAfaire(){
-    return this.todos.filter(todo => !todo.completed)
-
-    }
-
-
-  }
-
-}
-
-
-</script>
-
-
 
 <style>
 #app {
@@ -119,13 +13,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
-  li.todo{
-        color: red;
-    }
-    li.completed{
-        color: green;
-    }
 
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
